@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link href="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.css" rel="stylesheet">
+  <link href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+  <script src="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.js"></script>
+
+  <script src="script.js"></script>
+
+</head>
+<body>
+<div data-role="page" data-control-title="Home" id="page1">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+    </div>
+    <div role="main" class="ui-content">
+        <div style=" text-align:center" data-controltype="image">
+            <img style="width: 288px; height: 200px" src="https://sketttw.github.io/picc/logo.png">
+        </div>
+        <ul data-role="listview" data-divider-theme="a" data-inset="true">
+            <li data-role="list-divider" role="heading">
+                Where to Eat
+            </li>
+            <li data-theme="a">
+                <a href="#page2" data-transition="slide">
+                    Asian
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#page7" data-transition="slide">
+                    BBQ
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#page8" data-transition="slide">
+                    Italian
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#page8" data-transition="slide">
+                    Maxican
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#page10" data-transition="slide">
+                    Vegetarian
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="Asian" id="page2">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page1" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <div data-controltype="textblock">
+                    <p>
+                        <strong>
+                            <span style="font-size: large;" data-mce-style="font-size: large;">
+                                Sushi Heaven
+                            </span>
+                        </strong>
+                    </p>
+                    <p>
+                        5229 Morning Glory Rd
+                        <br>
+                        Hours: 11am - 10pm
+                        <br>
+                        Price: $$$
+                        <br>
+                        Web: sushiheaven.mer
+                    </p>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <div style="" data-controltype="image">
+                    <img style="width: 150px; height: 187px" src="https://sketttw.github.io/picc/Asian.png">
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#page5" class="ui-btn ">
+                    Map It
+                </a>
+            </div>
+            <div class="ui-block-b">
+                <a href="tel:886970441561" class="ui-btn ">
+                    Call
+                </a>
+            </div>
+        </div>
+        <div data-controltype="textblock">
+            <p>
+                Forget grabbing your sushi from little boats sailing past your table on
+                a moat. We send our signature rolls your way in baskets floating through
+                the air, suspended by minature balloons and blimps. Go ahead, reach up
+                and grab the roll of your choice, as if you're plucking it out of heaven
+                itself.
+            </p>
+        </div>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="Asian Map It" id="page5">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page2" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div id="googlemapsjs1" class="google-map" style="width: 288px; height: 400px; margin-left: auto; margin-right: auto">
+        </div>
+        <script type="text/javascript">
+                window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs1', {
+            ready: function(control) {
+
+                control.options = {
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                control.el = document.getElementById(control._id);
+                control.map = new google.maps.Map(control.el, control.options);
+
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'address': '403, Taichung City, West District, Section 2, Taiwan Boulevard, 459號廣三SOGO百貨'
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+
+                        var marker = new google.maps.Marker({
+                            map: control.map,
+                            position: results[0].geometry.location
+                        });
+                        control.center = results[0].geometry.location;
+                        control.map.setCenter(control.center);
+                    }
+                });
+
+            }
+        });
+        </script>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="BBQ" id="page7">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page1" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <div data-controltype="textblock">
+                    <p>
+                        <strong>
+                            <span style="font-size: large;" data-mce-style="font-size: large;">
+                                Lake Wallaby BBQ
+                            </span>
+                        </strong>
+                    </p>
+                    <p>
+                        Lake Wallaby BBQ
+                    </p>
+                    <p>
+                        975 Sunset Drive
+                        <br>
+                        Hours: 2pm - 11pm
+                        <br>
+                        Price: $$$$
+                        <br>
+                        Web: wallabybbq.mer
+                    </p>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <div style="" data-controltype="image">
+                    <img style="width: 150px; height: 187px" src="https://sketttw.github.io/picc/BBQ.png">
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#page11" class="ui-btn ">
+                    Map It
+                </a>
+            </div>
+            <div class="ui-block-b">
+                <a href="tel:886970441561" class="ui-btn ">
+                    Call
+                </a>
+            </div>
+        </div>
+        <div data-controltype="textblock">
+            <p>
+                G'day, Mate! meridien boasts the only absolutely 100% authentic Aussie
+                barbie outside of Australia. As sure as Bob's your uncle, you won't find
+                croc, roo or emu on this menu. It's the usual fare for fire: prawns, chicken
+                or beef.
+            </p>
+        </div>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="BBQ Map It" id="page11">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page7" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div id="googlemapsjs2" class="google-map" style="width: 288px; height: 400px; margin-left: auto; margin-right: auto">
+        </div>
+        <script type="text/javascript">
+                window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs2', {
+            ready: function(control) {
+
+                control.options = {
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                control.el = document.getElementById(control._id);
+                control.map = new google.maps.Map(control.el, control.options);
+
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'address': '403, Taichung City, West District, Section 2, Taiwan Boulevard, 459號廣三SOGO百貨'
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+
+                        var marker = new google.maps.Marker({
+                            map: control.map,
+                            position: results[0].geometry.location
+                        });
+                        control.center = results[0].geometry.location;
+                        control.map.setCenter(control.center);
+                    }
+                });
+
+            }
+        });
+        </script>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="Italian" id="page8">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page1" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <div data-controltype="textblock">
+                    <p>
+                        <strong>
+                            <span style="font-size: large;" data-mce-style="font-size: large;">
+                                Il Piatto Di Pasta
+                            </span>
+                        </strong>
+                    </p>
+                    <p>
+                        <strong>
+                            <span style="font-size: large;" data-mce-style="font-size: large;">
+                            </span>
+                        </strong>
+                    </p>
+                    <p>
+                        9950 Villa Road
+                        <br>
+                        Hours: 10am - 9pm
+                        <br>
+                        Price: $$
+                        <br>
+                        Web: pastatime.mer
+                    </p>
+                    <p>
+                        <strong>
+                            <span style="font-size: large;" data-mce-style="font-size: large;">
+                            </span>
+                        </strong>
+                    </p>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <div style="" data-controltype="image">
+                    <img style="width: 150px; height: 187px" src="https://sketttw.github.io/picc/Italian.png">
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#page13" class="ui-btn ">
+                    Map It
+                </a>
+            </div>
+            <div class="ui-block-b">
+                <a href="tel:886970441561" class="ui-btn ">
+                    Call
+                </a>
+            </div>
+        </div>
+        <div data-controltype="textblock">
+            <p>
+                You can't get them to eat their vegetables. You can't get them to eat
+                much. Chances are there is only one food your child will eat with pleasure
+                — pasta! We're here for you.
+            </p>
+        </div>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="Italian Map It " id="page13">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page7" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div id="googlemapsjs3" class="google-map" style="width: 288px; height: 400px; margin-left: auto; margin-right: auto">
+        </div>
+        <script type="text/javascript">
+                window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs3', {
+            ready: function(control) {
+
+                control.options = {
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                control.el = document.getElementById(control._id);
+                control.map = new google.maps.Map(control.el, control.options);
+
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'address': '403, Taichung City, West District, Section 2, Taiwan Boulevard, 459號廣三SOGO百貨'
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+
+                        var marker = new google.maps.Marker({
+                            map: control.map,
+                            position: results[0].geometry.location
+                        });
+                        control.center = results[0].geometry.location;
+                        control.map.setCenter(control.center);
+                    }
+                });
+
+            }
+        });
+        </script>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="Mexican" id="page9">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page1" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <div data-controltype="textblock">
+                    <p>
+                        <strong>
+                            <span style="font-size: large;" data-mce-style="font-size: large;">
+                                Meridien Mexican Grill
+                            </span>
+                        </strong>
+                    </p>
+                    <p>
+                        Meridien Mexican Grill
+                    </p>
+                    <p>
+                        2157 Misty Pine Ave.
+                        <br>
+                        Hours: 4pm - 2am
+                        <br>
+                        Price: $$
+                        <br>
+                        Web: mexicangrill.mer
+                    </p>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <div style="" data-controltype="image">
+                    <img style="width: 150px; height: 187px" src="https://sketttw.github.io/picc/Mexician.png">
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#page15" class="ui-btn ">
+                    Map It
+                </a>
+            </div>
+            <div class="ui-block-b">
+                <a href="tel:886970441561" class="ui-btn ">
+                    Call
+                </a>
+            </div>
+        </div>
+        <div data-controltype="textblock">
+            <p>
+                Urban foodies know the Meridien Mexican Grill is always a pleasant surprise.
+                Right after the menus arrive and just before the chips and salsa, someone
+                at your table notices. There is no grill!
+            </p>
+        </div>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="Maxican Map It  " id="page15">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page9" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div id="googlemapsjs4" class="google-map" style="width: 288px; height: 400px; margin-left: auto; margin-right: auto">
+        </div>
+        <script type="text/javascript">
+                window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs4', {
+            ready: function(control) {
+
+                control.options = {
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                control.el = document.getElementById(control._id);
+                control.map = new google.maps.Map(control.el, control.options);
+
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'address': '403, Taichung City, West District, Section 2, Taiwan Boulevard, 459號廣三SOGO百貨'
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+
+                        var marker = new google.maps.Marker({
+                            map: control.map,
+                            position: results[0].geometry.location
+                        });
+                        control.center = results[0].geometry.location;
+                        control.map.setCenter(control.center);
+                    }
+                });
+
+            }
+        });
+        </script>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="Vegetarian" id="page10">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page1" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <div data-controltype="textblock">
+                    <p>
+                        <strong>
+                            <span style="font-size: large;" data-mce-style="font-size: large;">
+                                Uptown Sprouts
+                            </span>
+                        </strong>
+                    </p>
+                    <p>
+                        7547 W. 3rd St.
+                        <br>
+                        Hours: 10am - 9pm
+                        <br>
+                        Price: $
+                        <br>
+                        Web: uptownsprouts.mer
+                    </p>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <div style="" data-controltype="image">
+                    <img style="width: 150px; height: 187px" src="https://sketttw.github.io/picc/Vegetarian.png">
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#page17" class="ui-btn ">
+                    Map It
+                </a>
+            </div>
+            <div class="ui-block-b">
+                <a href="tel:886970441561" class="ui-btn ">
+                    Call
+                </a>
+            </div>
+        </div>
+        <div data-controltype="textblock">
+            <p>
+                Our owner and founder proudly says, "If it had a face, this ain't the
+                place." Yes, we are honored to serve you everything that never had a mother,
+                a thought, or an instinct. It's all vegan, all the time.
+            </p>
+        </div>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+<div data-role="page" data-control-title="Vegetarian Map It   " id="page17">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Meridian 24/7
+        </h1>
+        <a href="#page9" class="ui-btn ui-btn-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div id="googlemapsjs5" class="google-map" style="width: 288px; height: 400px; margin-left: auto; margin-right: auto">
+        </div>
+        <script type="text/javascript">
+                window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs5', {
+            ready: function(control) {
+
+                control.options = {
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                control.el = document.getElementById(control._id);
+                control.map = new google.maps.Map(control.el, control.options);
+
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'address': '403, Taichung City, West District, Section 2, Taiwan Boulevard, 459號廣三SOGO百貨'
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+
+                        var marker = new google.maps.Marker({
+                            map: control.map,
+                            position: results[0].geometry.location
+                        });
+                        control.center = results[0].geometry.location;
+                        control.map.setCenter(control.center);
+                    }
+                });
+
+            }
+        });
+        </script>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3 class="ui-title">
+            NCUT
+        </h3>
+    </div>
+</div>
+</body>
+</html>
